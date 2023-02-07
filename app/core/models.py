@@ -58,3 +58,16 @@ class Training(models.Model):
     date = models.DateField(null=True)
     def __str__(self):
         return self.description
+
+class Section(models.Model):
+    """Section object"""
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    description = models.CharField(max_length=255)
+    rest_time = models.CharField(max_length=50)
+    reps = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.description

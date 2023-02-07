@@ -70,3 +70,21 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(training), training.description)
+
+    def test_create_section(self):
+        """Test creating a section is sucessful"""
+
+        user = get_user_model().objects.create_user(
+            'test@example.com',
+            'testpass123',
+        )
+
+        section = models.Section.objects.create(
+            user=user,
+            description = 'Bloco1',
+            rest_time='1',
+            reps='3',
+
+        )
+
+        self.assertEqual(str(section), section.description)

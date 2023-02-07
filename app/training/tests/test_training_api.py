@@ -22,6 +22,7 @@ from training.serializers import (
 
 TRAININGS_URL = reverse('training:training-list')
 
+
 def detail_url(training_id):
     """Create and return a training detail url"""
     return reverse('training:training-detail', args=[training_id])
