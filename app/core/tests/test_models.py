@@ -5,9 +5,14 @@ from decimal import Decimal
 
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+from django.utils import timezone
+import datetime
 
 from core import models
 
+def create_user(email='user@example.com', password='testpass123'):
+    """Create a return a new user."""
+    return get_user_model().objects.create_user(email, password)
 
 class ModelTests(TestCase):
     """Test models."""
@@ -51,16 +56,17 @@ class ModelTests(TestCase):
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
 
-    def test_create_customer(self):
-        """Test creating a customer is successful."""
+    def test_create_training(self):
+        """Test creating a training is successful."""
         user = get_user_model().objects.create_user(
             'test@example.com',
             'testpass123',
         )
-        customer = models.Customer.objects.create(
+        datetest = datetime.date(1997, 10, 19)
+        training = models.Training.objects.create(
             user=user,
-            name='Son Bubu',
-            age=26,
+            description='TreinoFuncional',
+            date = datetest,
         )
 
-        self.assertEqual(str(customer), customer.name)
+        self.assertEqual(str(training), training.description)

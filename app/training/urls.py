@@ -7,12 +7,12 @@ from django.urls import (
 
 from rest_framework.routers import DefaultRouter
 
-from customer import views
+from training import views
 
 router = DefaultRouter()
-router.register('customers',views.CustomerViewSet)
+router.register('trainings',views.TrainingViewSet)
 
-app_name = 'customer'
+app_name = 'training'
 
 urlpatterns = [
     path('', include(router.urls))

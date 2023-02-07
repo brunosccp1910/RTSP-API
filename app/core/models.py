@@ -8,6 +8,9 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin,
 )
+from django.utils import timezone
+import datetime
+
 
 
 class UserManager(BaseUserManager):
@@ -45,14 +48,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
 
-class Customer(models.Model):
-    """Customer object."""
+class Training(models.Model):
+    """Training object."""
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-    name = models.CharField(max_length=255)
-    age = models.IntegerField()
-
+    description = models.CharField(max_length=255)
+    date = models.DateField(null=True)
     def __str__(self):
-        return self.name
+        return self.description
