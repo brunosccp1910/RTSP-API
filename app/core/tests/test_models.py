@@ -88,3 +88,17 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(section), section.description)
+"""
+    def test_create_workout(self):
+        user = get_user_model().objects.create_user(
+            'test@example.com',
+            'testpass123',
+        )
+
+        workout = models.Workout.objects.create(
+            user=user,
+            description = 'Burp',
+            reps = '15',
+
+        )
+"""

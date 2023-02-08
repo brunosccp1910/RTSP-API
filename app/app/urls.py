@@ -19,6 +19,8 @@ from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -29,5 +31,14 @@ urlpatterns = [
         name='api-docs',
     ),
     path('api/user/', include('user.urls')),
-    path('api/training/', include('training.urls'))
+    path('api/training/', include('training.urls')),
+    path('api/section/', include('section.urls')),
+    path('api/workout/', include('workout.urls'))
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT,
+    )

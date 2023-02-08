@@ -46,3 +46,7 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Training)
+admin.site.register(models.Section)
+admin.site.register(models.Workout)
+admin.site.register(models.Section_Workout)
+admin.site.register(models.Training_Section)
